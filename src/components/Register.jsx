@@ -136,8 +136,8 @@ function Register() {
                     
                 </div>
                 <div className="mt-10 space-y-4">
-                    <button className='flex border py-3 px- w-55 items-center justify-center  text-gray-800 hover:text-gray-500 text-xs'>BECOME A MEMBER</button>
-                    <button className='flex border text-xs bg-black hover:opacity-81 text-gray-100 py-3 px- w-55 items-center justify-center'>SIGN IN</button>
+                    <button className='flex border py-3 px- w-full items-center justify-center  text-gray-800 hover:text-gray-500 text-xs'>BECOME A MEMBER</button>
+                    <button className='flex border text-xs bg-black hover:opacity-81 text-gray-100 py-3 px- w-full items-center justify-center'>SIGN IN</button>
                 </div>
             </form>
         </div>

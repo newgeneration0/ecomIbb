@@ -1,18 +1,17 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { FaAngleDown, FaAngleUp, FaInfoCircle, FaRuler } from 'react-icons/fa'
-// import bg from '../assets/image/bgPics.jpg'
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import ProductCard from './ProductCard';
 import { addToCart } from '../redux/CartSlice';
-// import { setProducts } from '../redux/ProductSlice';
-// import { shopData } from '../assets/shopData';
+// import { addToFavourites } from '../redux/FavouriteSlice';
+// import { addToFavourites, removeFromFavourites } from '../redux/FavouriteSlice';
 
 function ProductDetail() {
 
     const dispatch = useDispatch()
     const handleAddToCart = (e, product)=>{
-        e.stopPropagation()
+        // e.stopPropagation()
         e.preventDefault()
         dispatch(addToCart(product))
         alert('added to shopping bag!')
@@ -23,23 +22,39 @@ function ProductDetail() {
     const [materialToggle, setMaterialToggle] = useState(false);
     const [careToggle, setCareToggle] = useState(false);
 
-    // FOR PRODUCT INTERESTED
-    const products = useSelector(state => state.product)
+    //FOR PRODUCT INTERESTED
+    const interestedProducts = useSelector(state => state.product)
     
 
     //FOR GETTING MORE DETAILS WHEN PRODUCT IS CLICK
-    const {id} = useParams();
-    const product = useSelector((state) =>
-        state.product.products.find((product) => product.id === parseInt(id))
-    );
-    if(!product){
-        return<div className='mt-30 mx-5'>
-        <p className='text-2xl '>PRODUCT NOT FOUND</p>
-        <a href="/shop" className='text-black text-sm'>CONTINUE SHOPPING</a>
-        </div>;
-    }
+     const {id} = useParams()
+      const products = useSelector(state => state.product.products)
+  
+      const[product, setProduct] = useState({})
+  
+      useEffect(()=>{
+          const newProduct = products.find(product => product.id === parseInt(id))
+          setProduct(newProduct)
+      }, [products, id])
 
-   
+
+      // const favourites = useSelector((state) => state.favourites.favourites)
+      // const isFavourite = favourites.some((item)=>item.id === product.id)
+
+      // const favourites = favourites.some((item) => item.id === product.id) || []
+
+      // const isFavourite = favourites.some((item) => item.id === product.id)
+
+    // const {id} = useParams();
+    // const product = useSelector((state) =>
+    //     state.product.products.find((product) => product.id === parseInt(id))
+    // );
+    // if(!product){
+    //     return<div className='mt-30 mx-5'>
+    //     <p className='text-2xl '>PRODUCT NOT FOUND</p>
+    //     <a href="/shop" className='text-black text-sm'>CONTINUE SHOPPING</a>
+    //     </div>;
+    // }
 
   return (
     <div className='mx-5 my-10'>
@@ -73,6 +88,10 @@ function ProductDetail() {
                     ADD TO SHOPPING BAG
                 </button>
                 <button  className='bg-black hover:bg-white text-white hover:text-black text-sm border-1 border-black mt-7 flex w-5/5 justify-center items-center h-13'>BUY IT NOW</button>
+                {/* <button 
+                onClick={()=>dispatch(isFavourite ? removeFromFavourites(product.id) : addToFavourites(product))} 
+                 className='bg-black hover:bg-white text-white hover:text-black text-sm border-1 border-black mt-7 flex w-5/5 justify-center items-center h-13'>add to favourites</button> */}
+                 {/* <button onClick={dispatch(addToFavourites(product))} disabled={isFavourite}>{isFavourite ? 'added to fav' : "add to fav"}</button> */}
                 <div className='flex mt-12 text-xs items-center text-black'><FaInfoCircle className='me-1'/>DELIVERY TIME: 2-7 DAYS (IT DEPENDS ON LOCATION MOST TIMES)</div>
                 <p className='text-black text-xs mt-2'>CASH ON DELIVERY OPTION AVAILABLE</p>
 
@@ -114,7 +133,7 @@ function ProductDetail() {
         <div className='mt-15 px-20'>
             <h6 className='text-black text-2xl font-semibold mb-5'>YOU MIGHT ALSO BE INTERESTED IN</h6>
             <div className='grid grid-cols-4 gap-2 pb-10 px-10'>
-            {products.products.slice(4, 8).map(((product)=>(
+            {interestedProducts.products.slice(4, 8).map(((product)=>(
                 <ProductCard product={product} key={product.id}/>
             )))}
             </div>

@@ -9,20 +9,12 @@ const productSlice = createSlice({
     name: 'products',
     initialState,
     reducers:{
-        //FOFR PRODUCTS
+        //FOR PRODUCTS
         setProducts(state, action){
             state.products = action.payload
-        },
-
-        //FOR GETTING MORE DETAILS WHEN PRODUCT IS CLICK
-        clickProduct: (state, action) => {
-            state.clickedProduct = action.payload;
-        },
-        clearClickedProduct: (state) => {
-            state.clickedProduct = null;
-        },
+        }
     },
 })
 
-export const {setProducts, clickProduct, clearClickedProduct} = productSlice.actions;
+export const {setProducts} = productSlice.actions;
 export default productSlice.reducer

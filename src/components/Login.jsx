@@ -10,7 +10,7 @@ function Login() {
             <h3 className="text-lg font-semibold text-center">SIGN IN</h3>
         </div>
         <div className="mt-4">
-            <p className="text-center text-xs ms-4">SING IN - DON&apos;T MISS OUT ON OFFERS VOUCHERS DEALS DISCOUNTS AND <br/> BONUS</p>
+            <p className="text-center text-xs ms-4">SIGN IN - DON&apos;T MISS OUT ON OFFERS VOUCHERS DEALS DISCOUNTS AND <br/> BONUS</p>
         </div>
         <div className="flex justify-center items-center mt-10">
             <form className="borde p-1">
@@ -58,8 +58,8 @@ function Login() {
                     <a href='/' className="text-xs underline">FORGOTTEN PASSWORD?</a>
                 </div>
                 <div className="mt-14 space-y-4">
-                    <button className='flex border text-xs bg-black hover:opacity-81 text-gray-100 py-3 px- w-55 items-center justify-center'>SIGN IN</button>
-                    <button className='flex border py-3 px- w-55 items-center justify-center  text-gray-800 hover:text-gray-500 text-xs'>BECOME A MEMBER</button>
+                    <button className='flex border text-xs bg-black hover:opacity-81 text-gray-100 py-3 px- w-full items-center justify-center'>SIGN IN</button>
+                    <button className='flex border py-3 px- w-full items-center justify-center  text-gray-800 hover:text-gray-500 text-xs'>BECOME A MEMBER</button>
                 </div>
             </form>
         </div>

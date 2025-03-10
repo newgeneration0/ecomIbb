@@ -9,7 +9,9 @@ function Navbar() {
   //FOR DROPDOWN
   const [isDropdownVisible, setIsDropdownVisible] = useState(false);
 
-  const products = useSelector(state => state.cart.products)
+  const products = useSelector(state => state.cart.products) // FOR CART LENGTH
+
+  // const product = useSelector(state => state.favourites.products)
 
   return (
     <nav className='relative bg-gray-100 py-5'>
@@ -26,14 +28,22 @@ function Navbar() {
 
         <div className='flex space-x-6'>
           <Link to='/loginlandpage' className='text-xs text-black font-bold flex !no-underline'><FaUser className='text-xl pe-1' /> SIGN IN</Link>
-          <Link to='/favourite' className='text-xs text-black font-bold flex !no-underline'><FaUser className='text-xl pe-1' /> FAVOURITES</Link>
+          <Link to='/favourite' className='text-xs text-black font-bold flex !no-underline'>
+            <FaUser className='text-xl pe-1' />
+            FAVOURITES
+             {/* ({products.length > 0 && (
+              <span>
+                {product.length}
+              </span>
+            )}) */}
+          </Link>
           <Link to='/cart' className='text-xs text-black font-bold flex !no-underline'>
             <FaShoppingBag className='text-xl pe-1'/> 
-            SHOPPING BAG ({products.length > 0 && (
+            SHOPPING BAG [{products.length > 0 && (
               <span>
               {products.length}
               </span>
-            )})
+            )}]
           </Link>
         </div>
       </div>

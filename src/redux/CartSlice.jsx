@@ -107,11 +107,12 @@ const cartSlice = createSlice({
 
         increaseQuantity(state, action){
             const id = action.payload;
+            console.log(id);
             const findItem = state.products.find((item) => item.id === id)
             if(findItem){
                 findItem.quantity++;
                 findItem.totalPrice += findItem.price
-                state.totalPrice++;
+                // state.totalPrice++;
                 state.totalPrice += findItem.price
             }
         },
@@ -123,7 +124,7 @@ const cartSlice = createSlice({
                 if(findItem) {
                     findItem.quantity--;
                     findItem.totalprice -= findItem.price
-                    state.totalQuantity--;
+                    // state.totalQuantity--;
                     state.totalPrice -= findItem.price
                 }
             }
@@ -132,4 +133,5 @@ const cartSlice = createSlice({
 })
 
 export const {addToCart, decreaseQuantity, increaseQuantity, removeFromCart} = cartSlice.actions
+
 export default cartSlice.reducer

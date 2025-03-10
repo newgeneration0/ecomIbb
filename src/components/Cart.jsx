@@ -1,18 +1,3 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 import React from 'react'
 import { FaCcMastercard, FaCcVisa, FaCircle, FaTrash } from 'react-icons/fa'
 import { useDispatch, useSelector } from 'react-redux'
@@ -24,8 +9,10 @@ function Cart() {
     const dispatch = useDispatch()
 
     const cart = useSelector(state => state.cart)
+    console.log(cart);
+
      // FOR PRODUCT INTERESTED
-        const products = useSelector(state => state.product)
+    const products = useSelector(state => state.product)
 
   return (
     <div className='container bg-gray-100 py-5'>
